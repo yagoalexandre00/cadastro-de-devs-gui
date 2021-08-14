@@ -11,6 +11,29 @@ AMARELO = "#FAFF00"
 
 # ---------------- FUNÇÕES ---------------- #
 def confirmar_pressionado():
+    ler_dados_inseridos()
+    resetar_campos()
+
+import json
+def ler_dados_inseridos():
+    _nome      = campo_nome.get()
+    _sobrenome = campo_sobrenome.get()
+    nome_completo = f"{_nome} {_sobrenome}"
+
+    email = campo_email.get()
+    linguagens_lidas = campo_linguagens.get()
+    linguagens  = linguagens_lidas.split(',')
+    experiencia = campo_exp.get()
+
+    modelo = {
+        "nome"  : nome_completo,
+        "email" : email,
+        "linguagens"  : linguagens,
+        "experiencia" : experiencia
+    }
+    print(json.dumps(modelo, indent=4))
+
+def resetar_campos():
     global check_s, check_j, check_p, check_full, check_front, check_back
 
     campo_nome.delete(0, END)
